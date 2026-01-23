@@ -32,10 +32,8 @@ const Payment = ({
   const [success, setSuccess] = useState<boolean>(false);
 
   // Get base URL based on platform
-  const BASE_URL =
-      Platform.OS === "android"
-          ? "http://10.0.2.2:3000"
-          : "http://localhost:3000";
+  const BASE_URL = "https://rido-app-beta.vercel.app";
+
 
   const openPaymentSheet = async () => {
     await initializePaymentSheet();

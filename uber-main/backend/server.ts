@@ -11,8 +11,19 @@ import stripeRouter from "./api/stripe.js";
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// CORS Configuration
+const corsOptions = {
+    origin: [
+        'https://rido-app-beta.vercel.app',
+        'http://localhost:3000',
+        'http://localhost:8081',
+        'exp://*',
+    ],
+    credentials: true,
+};
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Health check
