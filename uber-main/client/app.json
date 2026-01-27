@@ -13,7 +13,8 @@
       "backgroundColor": "#2F80ED"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.khuzama.uber"
     },
     "android": {
       "adaptiveIcon": {
@@ -24,7 +25,8 @@
         "googleMaps": {
           "apiKey": "AIzaSyCdFpe4SsdfMPwDiYkbcmlDfk2gfyQX7gc"
         }
-      }
+      },
+      "package": "com.khuzama.uber"
     },
     "web": {
       "bundler": "metro",
@@ -41,6 +43,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": "https://uber.dev/"
+      },
+      "eas": {
+        "projectId": "1ed0494d-5c09-4528-844b-7c793c977d54"
+      }
     }
   }
 }

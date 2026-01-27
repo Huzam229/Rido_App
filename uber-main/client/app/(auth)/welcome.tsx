@@ -6,6 +6,7 @@ import Swiper from "react-native-swiper";
 
 import CustomButton from "@/components/CustomButton";
 import { onboarding } from "@/constants";
+import {StatusBar} from "expo-status-bar";
 
 const Home = () => {
   const swiperRef = useRef<Swiper>(null);
@@ -15,7 +16,8 @@ const Home = () => {
 
   return (
     <SafeAreaView className="flex h-full items-center justify-between bg-white">
-      <TouchableOpacity
+        <StatusBar style="light" backgroundColor="#000000" />
+        <TouchableOpacity
         onPress={() => {
           router.replace("/(auth)/sign-up");
         }}

@@ -9,6 +9,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 import Map from "@/components/Map";
 import { icons } from "@/constants";
+import {StatusBar} from "expo-status-bar";
 
 const RideLayout = ({
   title,
@@ -23,6 +24,7 @@ const RideLayout = ({
 
   return (
     <GestureHandlerRootView className="flex-1">
+      <StatusBar style="light" backgroundColor="#000000" />
       <View className="flex-1 bg-white">
         <View className="flex flex-col h-screen bg-blue-500">
           <View className="flex flex-row absolute z-10 top-16 items-center justify-start px-5">

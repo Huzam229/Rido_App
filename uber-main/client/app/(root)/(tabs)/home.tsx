@@ -36,10 +36,7 @@ const Home = () => {
 
   const [hasPermission, setHasPermission] = useState<boolean>(false);
 
-  const BASE_URL =
-      Platform.OS === "android"
-          ? "http://10.0.2.2:3000"
-          : "http://localhost:3000";
+  const BASE_URL = "https://rido-app-beta.vercel.app";
 
   // FIXED: Provide empty string as fallback instead of null
   const {

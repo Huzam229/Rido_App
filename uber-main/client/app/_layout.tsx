@@ -19,8 +19,10 @@ if (!publishableKey) {
   );
 }
 
-LogBox.ignoreLogs(["Clerk:"]);
-
+LogBox.ignoreLogs([
+  "Warning: ...",
+  "ReactImageView: Image source \"null\" doesn't exist"
+]);
 export default function RootLayout() {
   const [loaded] = useFonts({
     "Jakarta-Bold": require("../assets/fonts/PlusJakartaSans-Bold.ttf"),

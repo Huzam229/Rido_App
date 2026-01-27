@@ -6,14 +6,13 @@ import RideCard from "@/components/RideCard";
 import { images } from "@/constants";
 import { useFetch } from "@/lib/fetch";
 import { Ride } from "@/types/type";
+import {StatusBar} from "expo-status-bar";
 
 const Rides = () => {
   const { user } = useUser();
 
-  const BASE_URL =
-      Platform.OS === "android"
-          ? "http://10.0.2.2:3000"
-          : "http://localhost:3000";
+  const BASE_URL = "https://rido-app-beta.vercel.app";
+
 
   // FIXED: Provide empty string as fallback instead of null
   const {
@@ -26,6 +25,7 @@ const Rides = () => {
 
   return (
     <SafeAreaView className="flex-1 bg-white">
+      <StatusBar style="light" backgroundColor="#000000" />
       <FlatList
         data={recentRides}
         renderItem={({ item }) => <RideCard ride={item} />}

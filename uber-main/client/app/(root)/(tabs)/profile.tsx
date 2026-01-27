@@ -1,6 +1,8 @@
 import { useUser } from "@clerk/clerk-expo";
 import { Image, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { StatusBar } from "expo-status-bar";
+
 
 import InputField from "@/components/InputField";
 
@@ -9,6 +11,7 @@ const Profile = () => {
 
   return (
     <SafeAreaView className="flex-1">
+      <StatusBar style="light" backgroundColor="#000000" />
       <ScrollView
         className="px-5"
         contentContainerStyle={{ paddingBottom: 120 }}

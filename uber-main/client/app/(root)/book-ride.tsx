@@ -25,11 +25,11 @@ const BookRide = () => {
     >
       <RideLayout title="Book Ride">
         <>
-          <Text className="text-xl font-JakartaSemiBold mb-3">
+          <Text className="text-xl font-JakartaSemiBold">
             Ride Information
           </Text>
 
-          <View className="flex flex-col w-full items-center justify-center mt-10">
+          <View className="flex flex-col w-full items-center justify-center mt-8">
             <Image
               source={{ uri: driverDetails?.profile_image_url }}
               className="w-28 h-28 rounded-full"
@@ -53,7 +53,7 @@ const BookRide = () => {
             </View>
           </View>
 
-          <View className="flex flex-col w-full items-start justify-center py-3 px-5 rounded-3xl bg-general-600 mt-5">
+          <View className="flex flex-col w-full items-start justify-center py-3 px-5 rounded-3xl bg-general-600 mt-3">
             <View className="flex flex-row items-center justify-between w-full border-b border-white py-3">
               <Text className="text-lg font-JakartaRegular">Ride Price</Text>
               <Text className="text-lg font-JakartaRegular text-[#0CC25F]">
@@ -61,10 +61,10 @@ const BookRide = () => {
               </Text>
             </View>
 
-            <View className="flex flex-row items-center justify-between w-full border-b border-white py-3">
+            <View className="flex flex-row items-center justify-between w-full border-b border-white py-2">
               <Text className="text-lg font-JakartaRegular">Pickup Time</Text>
               <Text className="text-lg font-JakartaRegular">
-                {formatTime(driverDetails?.time!)}
+                {formatTime(parseInt(`${driverDetails?.time}`))}
               </Text>
             </View>
 
@@ -77,14 +77,14 @@ const BookRide = () => {
           </View>
 
           <View className="flex flex-col w-full items-start justify-center mt-5">
-            <View className="flex flex-row items-center justify-start mt-3 border-t border-b border-general-700 w-full py-3">
+            <View className="flex flex-row items-center justify-start mt-2 border-t border-b border-general-700 w-full py-3">
               <Image source={icons.to} className="w-6 h-6" />
               <Text className="text-lg font-JakartaRegular ml-2">
                 {userAddress}
               </Text>
             </View>
 
-            <View className="flex flex-row items-center justify-start border-b border-general-700 w-full py-3">
+            <View className="flex flex-row items-center justify-start border-b border-general-700 w-full py-5">
               <Image source={icons.point} className="w-6 h-6" />
               <Text className="text-lg font-JakartaRegular ml-2">
                 {destinationAddress}

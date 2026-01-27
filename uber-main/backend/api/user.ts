@@ -5,6 +5,7 @@ const router = Router();
 
 router.post("/", async (req: Request, res: Response) => {
     try {
+        console.log("Sign UP Called")
         const sql = neon(`${process.env.DATABASE_URL}`);
         const { name, email, clerkId } = req.body;
 

@@ -1,4 +1,39 @@
-.idea/
+cd ~/Desktop/uber-main
+cat .gitignore
+```
+
+Your `.gitignore` should include (Expo projects usually have this by default):
+```
+# Dependencies
 node_modules/
-*.log
-*.bak
+
+# Expo
+.expo/
+.expo-shared/
+dist/
+
+# Native builds
+android/build/
+android/.gradle/
+android/app/build/
+ios/Pods/
+ios/build/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# OS files
+.DS_Store
+*.apk
+*.ipa
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

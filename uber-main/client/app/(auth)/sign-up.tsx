@@ -9,10 +9,14 @@ import InputField from "@/components/InputField";
 import OAuth from "@/components/OAuth";
 import { icons, images } from "@/constants";
 import { fetchAPI } from "@/lib/fetch";
+import {StatusBar} from "expo-status-bar";
 
 const SignUp = () => {
   const { isLoaded, signUp, setActive } = useSignUp();
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [loading , setLoading] = useState(false)
+
+  const BASE_URL = "https://rido-app-beta.vercel.app";
 
   const [form, setForm] = useState({
     name: "",
@@ -27,6 +31,7 @@ const SignUp = () => {
 
   const onSignUpPress = async () => {
     if (!isLoaded) return;
+    setLoading(true)
     try {
       await signUp.create({
         emailAddress: form.email,
@@ -37,13 +42,16 @@ const SignUp = () => {
         ...verification,
         state: "pending",
       });
+      setLoading(false)
     } catch (err: any) {
       // See https://clerk.com/docs/custom-flows/error-handling
       // for more info on error handling
       console.log(JSON.stringify(err, null, 2));
       Alert.alert("Error", err.errors[0].longMessage);
+      setLoading(false)
     }
   };
+
   const onPressVerify = async () => {
     if (!isLoaded) return;
     try {
@@ -51,8 +59,11 @@ const SignUp = () => {
         code: verification.code,
       });
       if (completeSignUp.status === "complete") {
-        await fetchAPI("/(api)/user", {
+        await fetchAPI(`${BASE_URL}/api/users`, {
           method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
           body: JSON.stringify({
             name: form.name,
             email: form.email,
@@ -83,6 +94,7 @@ const SignUp = () => {
   };
   return (
     <ScrollView className="flex-1 bg-white">
+      <StatusBar style="light" backgroundColor="#000000" />
       <View className="flex-1 bg-white">
         <View className="relative w-full h-[250px]">
           <Image source={images.signUpCar} className="z-0 w-full h-[250px]" />
@@ -118,12 +130,13 @@ const SignUp = () => {
           <CustomButton
             title="Sign Up"
             onPress={onSignUpPress}
+            loading={loading}
             className="mt-6"
           />
           <OAuth />
           <Link
             href="/sign-in"
-            className="text-lg text-center text-general-200 mt-10"
+            className="text-md text-center text-general-200 mt-10"
           >
             Already have an account?{" "}
             <Text className="text-primary-500">Log In</Text>
@@ -164,6 +177,7 @@ const SignUp = () => {
             )}
             <CustomButton
               title="Verify Email"
+              loading={loading}
               onPress={onPressVerify}
               className="mt-5 bg-success-500"
             />
@@ -183,7 +197,10 @@ const SignUp = () => {
             </Text>
             <CustomButton
               title="Browse Home"
-              onPress={() => router.push(`/(root)/(tabs)/home`)}
+              onPress={()=>{
+                setShowSuccessModal(false)
+                router.replace("/(root)/(tabs)/home")
+              }}
               className="mt-5"
             />
           </View>
